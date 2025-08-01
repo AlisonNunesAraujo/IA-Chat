@@ -7,7 +7,6 @@ import {
   serverTimestamp,
   getDocs,
   query,
-  orderBy,
   where,
 } from "firebase/firestore";
 import { db } from "../../services/connectiondatabase";

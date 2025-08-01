@@ -1,11 +1,8 @@
-import { useContext } from "react";
+
 import "./styles.css";
 
-import { AppContext } from "../../context";
 
 export default function Header() {
-  const { user } = useContext(AppContext);
-
   return (
     <div className="header">
       

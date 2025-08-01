@@ -1,13 +1,14 @@
-import './App.css'
-import Chat from './pages/chat'
-
-
+import { BrowserRouter } from "react-router-dom"
+import PrivateRoutes from "./routs/priveRouts"
+import { Context } from "./context"
 function App() {
 
   return (
-    <>
-        <Chat />
-    </>
+    <BrowserRouter>
+      <Context>
+        <PrivateRoutes />
+      </Context>
+    </BrowserRouter>
   )
 }
 

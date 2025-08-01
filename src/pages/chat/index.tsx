@@ -8,19 +8,25 @@ import {
   getDocs,
   query,
   orderBy,
+  where,
 } from "firebase/firestore";
 import { db } from "../../services/connectiondatabase";
 import { GoogleGenAI } from "@google/genai";
+import { useContext } from "react";
+import { AppContext } from "../../context";
 
 type DataUsers = {
   messageUser: string;
   messageIA: string;
+  uid: string;
+  created: Date;
 };
 
 export default function Chat() {
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<DataUsers[]>();
+  const [data, setData] = useState<DataUsers[]>([]);
+  const { user } = useContext(AppContext);
 
   const ai = new GoogleGenAI({
     apiKey: "AIzaSyCveaBX494NX4tYaWkwMjxC0lRpIVr9L6A",
@@ -29,15 +35,20 @@ export default function Chat() {
   useEffect(() => {
     async function getMessages() {
       const dataRef = collection(db, "message");
-      const queryData = query(dataRef, orderBy("created", "asc"));
+      const queryDataUser = 
+      query(dataRef, where("uid", "==", user.uid));
 
-      getDocs(queryData).then((snapshot) => {
+    
+
+      getDocs(queryDataUser).then((snapshot) => {
         let list: DataUsers[] = [];
 
         snapshot.forEach((doc) =>
           list.push({
             messageUser: doc.data().messageUser,
             messageIA: doc.data().messageIA,
+            uid: doc.data().uid,
+            created: doc.data().created,
           })
         );
         setData(list);
@@ -62,6 +73,7 @@ export default function Chat() {
         messageUser: message,
         messageIA: response.text,
         created: serverTimestamp(),
+        uid: user.uid,
       });
 
       setMessage("");

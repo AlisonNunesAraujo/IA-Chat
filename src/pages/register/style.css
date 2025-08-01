@@ -1,0 +1,117 @@
+.register {
+  width: 100%;
+  height: 100dvh;
+  background-color: #242424;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  width: 50%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo img {
+  width: 95vh;
+  height: 95vh;
+  border-radius: 5px;
+  margin-left: 5%;
+}
+
+.register form {
+  width: 100%;
+  height: 50dvh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top: 10vh;
+  align-items: center;
+}
+
+.register form label {
+  color: #fff;
+  font-size: 17px;
+  margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.register form input {
+  width: 50%;
+  height: 30px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  outline: none;
+}
+
+.register form button {
+  width: 30%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.register form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register form div h1 {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .register {
+    flex-direction: column;
+  }
+  .logo {
+    width: 100%;
+    height: 40dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo img {
+    width: 50vh;
+    height: 40vh;
+    border-radius: 10px;
+  }
+  .register form {
+    width: 100%;
+    height: 50dvh;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .register form label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .register form input {
+    width: 80%;
+    height: 20px;
+  }
+
+  .register form button {
+    width: 50%;
+    height: 30px;
+    font-size: 16px;
+  }
+}
